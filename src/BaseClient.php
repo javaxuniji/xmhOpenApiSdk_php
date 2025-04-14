@@ -17,7 +17,7 @@ class BaseClient {
      * @throws SdkException
      */
     public function do($method,$callUrl,  $headers,$params) {
-        $logger = XmhConfig::getLogger();
+        $logger = Config::getLogger();
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => $callUrl,

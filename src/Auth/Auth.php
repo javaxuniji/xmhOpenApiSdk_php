@@ -7,7 +7,7 @@ use XMH\OpenApiSdk\Exception\ErrorCodes;
 use XMH\OpenApiSdk\Exception\OpenApiException;
 use XMH\OpenApiSdk\Exception\SdkException;
 use XMH\OpenApiSdk\StorageInterface;
-use XMH\OpenApiSdk\XmhConfig;
+use XMH\OpenApiSdk\Config;
 
 class Auth {
     private StorageInterface $storage;
@@ -27,9 +27,9 @@ class Auth {
         if (!empty($token)) {
             return $token;
         }
-        $appId = XmhConfig::getAppId();
-        $appSecret = XmhConfig::getAppSecret();
-        $fullBaseUri = XmhConfig::GetFullBaseUri();
+        $appId = Config::getAppId();
+        $appSecret = Config::getAppSecret();
+        $fullBaseUri = Config::GetFullBaseUri();
 
         $response = $this->baseClient->do('POST', "$fullBaseUri/applyToken", array(
             "ApiVersion: 20250411",

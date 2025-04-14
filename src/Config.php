@@ -5,7 +5,7 @@ namespace XMH\OpenApiSdk;
 
 use XMH\OpenApiSdk\Exception\SdkException;
 
-class XmhConfig {
+class Config {
     private static string $signSalt;
     private static string $appId;
     private static string $appSecret;
@@ -20,12 +20,12 @@ class XmhConfig {
      */
     public static function getDomain(): string {
         switch (self::$env) {
-            case    XmhCommon::ENV_ALPHA:
-                return XmhCommon::DOMAIN_ALPHA;
-            case XmhCommon::ENV_BETA:
-                return XmhCommon::DOMAIN_BETA;
-            case XmhCommon::ENV_IDC:
-                return XmhCommon::DOMAIN_IDC;
+            case    Common::ENV_ALPHA:
+                return Common::DOMAIN_ALPHA;
+            case Common::ENV_BETA:
+                return Common::DOMAIN_BETA;
+            case Common::ENV_IDC:
+                return Common::DOMAIN_IDC;
             default:
                 throw new SdkException('error env config', -1);
         }
@@ -41,12 +41,12 @@ class XmhConfig {
      */
     public static function getBaseurl(): string {
         switch (self::$env) {
-            case    XmhCommon::ENV_ALPHA:
-                return XmhCommon::BASEURL_ALPHA;
-            case XmhCommon::ENV_BETA:
-                return XmhCommon::BASEURL_BETA;
-            case XmhCommon::ENV_IDC:
-                return XmhCommon::BASEURL_IDC;
+            case    Common::ENV_ALPHA:
+                return Common::BASEURL_ALPHA;
+            case Common::ENV_BETA:
+                return Common::BASEURL_BETA;
+            case Common::ENV_IDC:
+                return Common::BASEURL_IDC;
             default:
                 throw new SdkException('error env config', -1);
         }

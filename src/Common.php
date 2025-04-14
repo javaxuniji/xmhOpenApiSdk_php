@@ -1,7 +1,7 @@
 <?php
 
 namespace XMH\OpenApiSdk;
-class XmhCommon {
+class Common {
     public const  BASEURL_ALPHA = "go/packageOpenApiWeb/OpenApiV2";
     public const  DOMAIN_ALPHA = "alphaxcottons.xinhulu.com";
     public const  BASEURL_BETA = "go/packageOpenApiWeb/OpenApiV2";

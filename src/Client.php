@@ -22,25 +22,25 @@ class Client {
     private BaseClient $baseClient;
 
     public function __construct() {
-        $this->appId = XmhConfig::getAppId();
-        $this->appSecret = XmhConfig::getAppSecret();
-        $this->signSalt = XmhConfig::getSignSalt();
-        $this->logger = XmhConfig::getLogger();
-        $this->storage = XmhConfig::getStorage();
+        $this->appId = Config::getAppId();
+        $this->appSecret = Config::getAppSecret();
+        $this->signSalt = Config::getSignSalt();
+        $this->logger = Config::getLogger();
+        $this->storage = Config::getStorage();
         $this->auth = new Auth();
-        $this->env = XmhConfig::getEnv();
+        $this->env = Config::getEnv();
         switch ($this->env) {
-            case    XmhCommon::ENV_ALPHA:
-                $this->doamin = XmhCommon::DOMAIN_ALPHA;
-                $this->baseurl = XmhCommon::BASEURL_ALPHA;
+            case    Common::ENV_ALPHA:
+                $this->doamin = Common::DOMAIN_ALPHA;
+                $this->baseurl = Common::BASEURL_ALPHA;
                 break;
-            case XmhCommon::ENV_BETA:
-                $this->doamin = XmhCommon::DOMAIN_BETA;
-                $this->baseurl = XmhCommon::BASEURL_BETA;
+            case Common::ENV_BETA:
+                $this->doamin = Common::DOMAIN_BETA;
+                $this->baseurl = Common::BASEURL_BETA;
                 break;
-            case XmhCommon::ENV_IDC:
-                $this->doamin = XmhCommon::DOMAIN_IDC;
-                $this->baseurl = XmhCommon::BASEURL_IDC;
+            case Common::ENV_IDC:
+                $this->doamin = Common::DOMAIN_IDC;
+                $this->baseurl = Common::BASEURL_IDC;
                 break;
         }
         $this->baseClient = new BaseClient();
@@ -117,7 +117,7 @@ class Client {
 //        }
 //        curl_close($curl);
 //        $resData = json_decode($response, true);
-        $fullBaseUrl=XmhConfig::GetFullBaseUri();
+        $fullBaseUrl=Config::GetFullBaseUri();
         $response = $this->baseClient->do('POST', "$fullBaseUrl/$url", array(
                 "Authorization:Bearer $authorization",
                 "ApiVersion: 20250411",
