@@ -7,7 +7,7 @@ class SdkException extends \Exception {
         parent::__construct($message, $code, $previous);
     }
 
-    public static function fromErrorInfo(Errors $errorInfo, ?\Throwable $previous = null): self {
+    public static function fromErrorInfo(Errors $errorInfo, ?array $responseData = null, ?\Throwable $previous = null): self  {
         return new static($errorInfo->getMessage(), $errorInfo->getCode(), $previous);
     }
 }
