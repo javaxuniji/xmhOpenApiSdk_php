@@ -62,7 +62,7 @@ class Config {
     public static function GetFullBaseUri():string {
         $domain = self::getDomain();
         $baseurl = self::getBaseurl();
-        return " https://{$domain}/$baseurl";
+        return "https://{$domain}/$baseurl";
     }
 
     public static function getEnv(): string {
