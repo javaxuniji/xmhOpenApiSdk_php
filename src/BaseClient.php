@@ -36,7 +36,7 @@ class BaseClient {
         $response = curl_exec($curl);
         if (curl_errno($curl)) {
             curl_close($curl);
-            $logger->error("curl call ${$callUrl} error");
+            $logger->error("curl call {$callUrl} error");
             throw  OpenApiException::fromErrorInfo(ErrorCodes::$OPRNAPI_REQUEST_ERROR);
         } else {
             $httpInfo = curl_getinfo($curl);
