@@ -1,0 +1,26 @@
+{
+  "name": "xmh/openapi-sdk",
+  "description": "XMH OpenAPI SDK for PHP",
+  "type": "library",
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "XMH\\OpenApiSdk\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "yujianfx",
+      "email": ""
+    }
+  ],
+  "minimum-stability": "stable"
+}
