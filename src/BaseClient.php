@@ -43,7 +43,7 @@ class BaseClient {
             $http_code = $httpInfo['http_code'];
             if ($http_code != 200) {
                 curl_close($curl);
-                $logger->error("curl call ${$callUrl} error http status:{$http_code} is not 200 ok");
+                $logger->error("curl call {$callUrl} error http status:{$http_code} is not 200 ok");
                 if (in_array($http_code, [
                     408, 503, 504, 598, 599// time out
                 ])) throw  OpenApiTimeOutException::fromErrorInfo(ErrorCodes::$NETWORK_TIME_OUT_ERROR);
