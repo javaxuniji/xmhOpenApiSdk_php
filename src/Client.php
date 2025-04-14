@@ -69,7 +69,7 @@ class Client {
         $jsonParams = json_encode($params, 256);
         $this->logger->debug("baseDo input params:{$jsonParams}");
         $authorization = $this->auth->getAccessToken();
-        $binaryHash = hash_hmac('sha256', $jsonParams, $this->signSalt);
+        $binaryHash = hash_hmac('sha256', $jsonParams, $this->signSalt,true);
         $signature = base64_encode($binaryHash);
         $callUrl = "https://{$this->doamin}/$this->baseurl/$url";
         $this->logger->debug("call url $callUrl");
