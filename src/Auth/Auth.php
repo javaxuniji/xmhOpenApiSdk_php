@@ -10,7 +10,6 @@ use XMH\OpenApiSdk\StorageInterface;
 use XMH\OpenApiSdk\Config;
 
 class Auth {
-    private StorageInterface $storage;
     private BaseClient $baseClient;
     const XMH_TOKEN_STORAGE_KEY = 'XMH_TOKEN_STORAGE_KEY';
 
@@ -23,7 +22,7 @@ class Auth {
      * @throws SdkException
      */
     public function getAccessToken(): string {
-        $token = $this->storage->get(self::XMH_TOKEN_STORAGE_KEY);
+        $token = Config::getStorage()->get(self::XMH_TOKEN_STORAGE_KEY);
         if (!empty($token)) {
             return $token;
         }
@@ -54,7 +53,7 @@ class Auth {
             throw new SdkException('Failed to get access token');
         }
 
-        $this->storage->set(self::XMH_TOKEN_STORAGE_KEY, $data['accessToken'], $data['expiredSecond'] ?? 3600);
+        Config::getStorage()->set(self::XMH_TOKEN_STORAGE_KEY, $data['accessToken'], $data['expiredSecond'] ?? 3600);
         return $data['accessToken'];
     }
 
@@ -63,7 +62,7 @@ class Auth {
      * @throws SdkException
      */
     public function refreshToken(): void {
-        $this->storage->delete(self::XMH_TOKEN_STORAGE_KEY);
+        Config::getStorage()->delete(self::XMH_TOKEN_STORAGE_KEY);
         $this->getAccessToken();
     }
 }
