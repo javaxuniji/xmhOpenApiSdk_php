@@ -49,7 +49,7 @@ class Auth {
         if ($apiErrCode !== 0) {
             throw  new OpenApiException($apiErrMsg, $apiErrCode, $data);
         }
-        if (!isset($data['access_token'])) {
+        if (!isset($data['accessToken'])) {
             throw new SdkException('Failed to get access token');
         }
 
